@@ -1,0 +1,22 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// sb-admin-2 styles
+// @import '~startbootstrap-sb-admin/vendor/metisMenu/metisMenu.css';
+// @import '~startbootstrap-sb-admin/css/sb-admin.css';
+// @import '~startbootstrap-sb-admin/vendor/morrisjs/morris.css';
+// font-awesome
+// $fa-font-path: "../fonts/" !default
+// @import "~font-awesome/scss/font-awesome";
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}

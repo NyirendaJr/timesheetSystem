@@ -1,0 +1,22 @@
+/* navigation menu  */
+.navbar{
+    background-color: #005581;
+    border: 0px;
+    border-radius: 0px;
+  }
+  #navbar a{
+    color: #d5d1d1;
+    font-size: 17px;
+  }
+  #navbar a:hover{
+    background-color: #1c2a48;
+  }
+  #brand{
+    color: #e3d9d9;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(150, 150,150, 0.75);
+  }

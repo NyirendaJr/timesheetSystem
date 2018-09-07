@@ -4,17 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <title>Timesheet - Home</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="{{ asset('assets/css/metisMenu.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="{{ asset('assets/css/morris.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="{{ asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <style media="screen">
@@ -95,18 +92,19 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+
                         @empty
                         <li class="text-center">
                            You haven't any notification
                         </li>
                         <li class="divider"></li>
                         @endforelse
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All document</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
                     @elseif(Auth::user()->role == "HR")
@@ -157,23 +155,23 @@
                             <a href="#">
                                 <div>
                                     <i class="fa fa-file fa-fw"></i>{{ $value->filedesc }}&nbsp
-                                    <span class="pull-right text-muted small">by {{ $value->user_id }}
                                     <span class="label label-primary">{{ $value->created_at }}</span></span>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+
                         @empty
                         <li class="text-center">
                            You haven't any notification
                         </li>
                         <li class="divider"></li>
                         @endforelse
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All document</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
                     </ul>
                   @endif
                 </li>
@@ -248,18 +246,14 @@
             <!-- /.container-fluid -->
 
         </div>
-        <!-- /#page-wrapper -->
-        <!-- <div class="footer text-center sticky-bottom" style="background-color: #ccc;">
-             Copyright (c) 2018 Copyright Holder All Rights Reserved.
-        </div> -->
-
     </div>
     <!-- /#wrapper -->
 
     <!-- modals -->
     <div id="deleteDocument" class="modal fade">
-      <form id="formUrl" action="sentdocs/" method="post">
+      <form id="docFormUrl" action="sentdocs/" method="post">
         {{ csrf_field() }}
+        {{ method_field('DELETE') }}
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -271,7 +265,7 @@
                     <input type="hidden" id="documentId">
                 </div>
                 <div class="modal-footer" style="margin-top: 0">
-                    <button type="submit" class="btn btn-danger btn-sm" data-dismiss="modal">delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm">delete</button>
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -283,18 +277,12 @@
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('assets/css/metisMenu.min.js') }}"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('assets/js/raphael.min.js') }}"></script>
-    <!-- <script src="{{ asset('assets/js/morris.min.js') }}"></script>
-    <script src="{{ asset('assets/js/morris-data.js') }}"></script> -->
-    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
     <!-- DataTables JavaScript -->
    <script src="{{ asset('assets/datatables/js/jquery.dataTables.min.js') }}"></script>
    <script src="{{ asset('assets/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
    <script src="{{ asset('assets/datatables-responsive/dataTables.responsive.js') }}"></script>
-   <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+   <script src="{{ asset('assets/js/sb-admin-2.js') }}"></script>
    <script src="{{ asset('assets/js/custome.js') }}"></script>
    <script>
        $(document).ready(function() {

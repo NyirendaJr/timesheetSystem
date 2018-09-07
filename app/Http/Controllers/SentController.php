@@ -81,10 +81,9 @@ class SentController extends Controller
      * @param  \App\Sent  $sent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sent $sent)
+    public function destroy($id)
     {
-        return $sent;
-        //$this->sent->deleteSentDocument($sent);
-        //return redirect()->back();
+        $this->sent->deleteSentDocument($id);
+        return redirect()->back();
     }
 }

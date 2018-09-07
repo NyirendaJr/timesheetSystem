@@ -25,7 +25,7 @@ class SentRepository implements SentInterface
 
 
   public function deleteSentDocument($id){
-    $this->sent::find($id);
-    $this->sent->delete();
+    $document = $this->sent::find($id);
+    $document->delete();
   }
 }

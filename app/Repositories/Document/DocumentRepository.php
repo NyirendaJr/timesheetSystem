@@ -35,8 +35,10 @@ class DocumentRepository implements DocumentInterface
       $this->sent->saveSent($user_id, $filedesc, $filename, $sendTo);
   }
 
-  public function downloadDocument(){
-    $mydoc = DB::table('documents')->where('user_id', 2)->first();
+  public function downloadDocument($id){
+    $mydoc = DB::table('documents')
+    ->where('id', $id)
+    ->first();
     $filepath = $mydoc->file;
     return $filepath;
   }
@@ -44,17 +46,22 @@ class DocumentRepository implements DocumentInterface
 
   public function receiveHrDocument(){
     $mynots = DB::table('documents')
-    ->where('receiver', 'HR')->get();
+    ->where('receiver', 'HR')
+    ->get();
     return $mynots;
   }
 
   public function receiveMdDocument(){
-    $mdnots = DB::table('documents')->where('receiver', 'Manager')->get();
+    $mdnots = DB::table('documents')
+    ->where('receiver', 'Manager')
+    ->get();
     return $mdnots;
   }
 
   public function receiveStDocument(){
-    $stnots = DB::table('documents')->where('receiver', 'Staff')->get();
+    $stnots = DB::table('documents')
+    ->where('receiver', 'Staff')
+    ->get();
     return $stnots;
   }
 
@@ -68,7 +75,8 @@ class DocumentRepository implements DocumentInterface
   public function showHrReceivedDocument(){
     $user_id = Auth::user()->id;
     $receivedHr = DB::table('documents AS d')
-    ->join('users AS u','d.user_id', '=', 'u.id')
+    ->join('users AS u','u.id', '=', 'd.user_id')
+    ->select('d.id as doc_id', 'd.filedesc as filedesc', 'd.tagName as tagName', 'd.receiver as receiver', 'd.file as file', 'u.lastname as lastname' ,'u.role as role', 'd.created_at as created_at')
     ->where('receiver', 'HR')
     ->get();
     return $receivedHr;
@@ -78,6 +86,7 @@ class DocumentRepository implements DocumentInterface
     $user_id = Auth::user()->id;
     $receivedMd = DB::table('documents AS d')
     ->join('users AS u','d.user_id', '=', 'u.id')
+    ->select('d.id as doc_id', 'd.filedesc as filedesc', 'd.tagName as tagName', 'd.receiver as receiver', 'd.file as file', 'u.lastname as lastname' ,'u.role as role', 'd.created_at as created_at')
     ->where('receiver', 'Manager')
     ->get();
     return $receivedMd;
@@ -85,8 +94,9 @@ class DocumentRepository implements DocumentInterface
 
   public function showStReceivedDocument(){
     $user_id = Auth::user()->id;
-    $receivedSt =DB::table('documents AS d')
-    ->join('users AS u','d.user_id', '=', 'u.id')
+    $receivedSt = DB::table('documents AS d')
+    ->Join('users AS u','d.user_id', '=', 'u.id')
+    ->select('d.id as doc_id', 'd.filedesc as filedesc', 'd.tagName as tagName', 'd.receiver as receiver', 'd.file as file', 'u.lastname as lastname' ,'u.role as role', 'd.created_at as created_at')
     ->where('receiver', 'Staff')
     ->get();
     return $receivedSt;

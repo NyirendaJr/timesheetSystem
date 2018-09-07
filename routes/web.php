@@ -13,7 +13,7 @@
 Route::resource('sentdocs', 'SentController');
 Route::post('/store', 'DocumentController@store');
 Route::get('/create', 'DocumentController@create');
-Route::get('/download', 'DocumentController@show')->middleware('auth');
+Route::get('/download/{id}', 'DocumentController@show')->middleware('auth');
 Route::get('/sent', 'DocumentController@sent');
 Route::get('/received', 'DocumentController@received');
 

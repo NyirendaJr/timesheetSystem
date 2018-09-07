@@ -8,7 +8,7 @@
 </div>
 <div class="row">
    <div class="col-lg-12">
-      <iframe src="{{ $docs }}" frameborder="0" style="width:100%;height:500px;"></iframe>
+      <iframe src="{{ $pathToFile }}" frameborder="0" style="width:100%;height:500px;"></iframe>
    </div>
 </div>
 @endsection

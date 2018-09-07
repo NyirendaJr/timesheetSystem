@@ -1,15 +1,3 @@
-$(function() {
-    //$('#side-menu').metisMenu();
-});
-
-$(function() {
-  $('#deleteId').click(function(){
-    //$('#deleteDocument').modal('show');
-    console.log('hello');
-  //  alert("hello world");
-  });
-});
-
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size

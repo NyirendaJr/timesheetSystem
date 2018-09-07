@@ -35,7 +35,9 @@
                               <td>{{ $value->file }}</td>
                               <td class="center">{{ $value->created_at }}</td>
                               <td class="center">{{ $value->lastname }} ({{ $value->role }})</td>
-                              <td class="center"><button type="button" class="btn btn-info btn-sm">view</button></td>
+                              <td class="center">
+                                <a href="/download/{{ $value->doc_id }}" class="btn btn-info btn-sm">view</a>
+                              </td>
                           </tr>
                           @empty
                           @endforelse
@@ -47,7 +49,9 @@
                               <td>{{ $value->file }}</td>
                               <td class="center">{{ $value->created_at }}</td>
                               <td class="center">{{ $value->lastname }} ({{ $value->role }})</td>
-                              <td class="center"><button type="button" class="btn btn-info btn-sm">view</button></td>
+                              <td class="center">
+                                <a href="/download/{{ $value->doc_id }}" class="btn btn-info btn-sm">view</a>
+                              </td>
                           </tr>
                           @empty
                           @endforelse
@@ -59,7 +63,9 @@
                               <td>{{ $value->file }}</td>
                               <td class="center">{{ $value->created_at }}</td>
                               <td class="center">{{ $value->lastname }} ({{ $value->role }})</td>
-                              <td class="center"><button type="button" class="btn btn-info btn-sm">view</button></td>
+                              <td class="center">
+                                <a href="/download/{{ $value->doc_id }}" class="btn btn-info btn-sm">view</a>
+                              </td>
                           </tr>
                           @empty
                           @endforelse

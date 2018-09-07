@@ -75,20 +75,20 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-       $filename = $this->document->downloadDocument();
+       $filename = $this->document->downloadDocument($id);
 
-       $docs = storage_path('app/public/document/' . $filename);
+       $pathToFile = storage_path('app/public/document/' . $filename);
 
-      // return  $docs =  FacadeResponse::make(file_get_contents($pathToFile), 200, [
-      //       'Content-Type' => 'application/pdf',
-      //       'Content-Disposition' => 'inline; filename="'.$filename.'"'
-      //   ]);
-       $hrnots = $this->document->receiveHrDocument();
-       $mdnots = $this->document->receiveMdDocument();
-       $stnots = $this->document->receiveStDocument();
-       return view('show', compact('hrnots', 'mdnots','stnots','docs'));
+       return FacadeResponse::make(file_get_contents($pathToFile), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"'
+        ]);
+       // $hrnots = $this->document->receiveHrDocument();
+       // $mdnots = $this->document->receiveMdDocument();
+       // $stnots = $this->document->receiveStDocument();
+       //return view('show', compact('hrnots', 'mdnots','stnots','pathToFile'));
     }
 
     /**
@@ -122,7 +122,7 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     public function sent(){
@@ -140,7 +140,7 @@ class DocumentController extends Controller
       $hrnots = $this->document->receiveHrDocument();
       $mdnots = $this->document->receiveMdDocument();
       $stnots = $this->document->receiveStDocument();
-      return view('received',
-      compact('hrnots', 'mdnots','stnots', 'receivedHr','receivedMd','receivedSt'));
+      //return json_encode($receivedSt);
+      return view('received', compact('hrnots', 'mdnots','stnots', 'receivedHr','receivedMd','receivedSt'));
     }
 }
